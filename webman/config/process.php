@@ -28,6 +28,10 @@ return [
                 base_path() . '/support',
                 base_path() . '/resource',
                 base_path() . '/.env',
+                base_path() . '/model',
+                base_path() . '/service',
+                base_path() . '/controller',
+                base_path() . '/util',
             ], glob(base_path() . '/plugin/*/app'), glob(base_path() . '/plugin/*/config'), glob(base_path() . '/plugin/*/api')),
             // Files with these suffixes will be monitored
             'monitorExtensions' => [

@@ -14,9 +14,36 @@
 
 use Webman\Route;
 
-//后台
+//首页
+Route::any('/', function ($rquest) {
+    return view('index/view');
+});
+
+//前台，没有权限
+Route::group('/', function () {
 
 
+});
+
+//前台，api有权限
+Route::group('/', function () {
+
+
+})->middleware([
+    app\middleware\CrossDomain::class,
+]);;
+
+//后台接口，没权限
+Route::group('/api', function () {
+
+
+});
+
+//后台接口，有权限
+Route::group('/api', function () {
+
+
+});
 
 //请求不存在的url返回信息
 Route::fallback(function () {
