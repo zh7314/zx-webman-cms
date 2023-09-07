@@ -14,7 +14,16 @@
 
 use Webman\Route;
 
+//后台
 
+
+
+//请求不存在的url返回信息
+Route::fallback(function () {
+    return json(['code' => 404, 'msg' => '404 not found']);
+});
+//关闭自动路由
+Route::disableDefaultRoute();
 
 
 
