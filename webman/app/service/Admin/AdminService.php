@@ -2,10 +2,10 @@
 
 namespace app\service\Admin;
 
-use App\Models\Admin;
+use app\model\Admin;
 use Exception;
-use App\util\GlobalCode;
-use App\util\GlobalMsg;
+use app\util\GlobalCode;
+use app\util\GlobalMsg;
 
 class AdminService
 {

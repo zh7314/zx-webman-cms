@@ -3,17 +3,17 @@
 namespace app\service\Admin;
 
 
-use App\Models\Admin;
-use App\Models\AdminGroup;
-use App\Models\AdminPermission;
-use App\Models\BannerCate;
-use App\Models\DownloadCate;
-use App\Models\NewsCate;
-use App\Models\ProductCate;
-use App\Models\VideoCate;
+use app\model\Admin;
+use app\model\AdminGroup;
+use app\model\AdminPermission;
+use app\model\BannerCate;
+use app\model\DownloadCate;
+use app\model\NewsCate;
+use app\model\ProductCate;
+use app\model\VideoCate;
 use Exception;
 use Illuminate\Http\UploadedFile;
-use App\util\GlobalCode;
+use app\util\GlobalCode;
 use ZX\Tools\File\SecurityCheck;
 use ZX\Tools\File\MimeTypes;
 

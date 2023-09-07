@@ -2,10 +2,10 @@
 
 namespace app\service\Admin;
 
-use App\Models\News;
+use app\model\News;
 use Exception;
-use App\util\GlobalCode;
-use App\util\GlobalMsg;
+use app\util\GlobalCode;
+use app\util\GlobalMsg;
 
 class NewsService
 {

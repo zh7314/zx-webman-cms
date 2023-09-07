@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace app\controller\Admin;
 
-use Illuminate\Http\Request;
-use App\Services\Admin\LangService;
+use support\Request;
+use app\service\Admin\LangService;
 use Throwable;
-use App\util\ResponseTrait;
+use app\util\ResponseTrait;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
-class LangController extends Controller
+
+class LangController
 {
 
     use ResponseTrait;

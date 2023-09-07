@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace app\controller\Admin;
 
-use Illuminate\Http\Request;
-use App\Services\Admin\PlatformService;
+use support\Request;
+use app\service\Admin\PlatformService;
 use Throwable;
-use App\util\ResponseTrait;
+use app\util\ResponseTrait;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
-class PlatformController extends Controller
+
+class PlatformController 
 {
 
     use ResponseTrait;

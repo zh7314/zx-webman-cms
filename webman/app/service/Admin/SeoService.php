@@ -2,10 +2,10 @@
 
 namespace app\service\Admin;
 
-use App\Models\Seo;
+use app\model\Seo;
 use Exception;
-use App\util\GlobalCode;
-use App\util\GlobalMsg;
+use app\util\GlobalCode;
+use app\util\GlobalMsg;
 
 class SeoService
 {

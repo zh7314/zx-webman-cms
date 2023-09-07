@@ -2,7 +2,6 @@
 
 namespace app\controller\Web;
 
-
 use app\service\Admin\CommonService;
 use app\util\ResponseTrait;
 use Exception;

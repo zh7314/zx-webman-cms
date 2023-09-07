@@ -4,14 +4,15 @@ namespace app\controller\Admin;
 
 
 use app\service\Admin\CommonService;
-use App\Services\Admin\LoginService;
+use app\service\Admin\LoginService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Throwable;
 use Exception;
-use App\util\ResponseTrait;
+use app\util\ResponseTrait;
+use support\Request;
 
-class IndexController extends Controller
+class IndexController
 {
     use ResponseTrait;
 

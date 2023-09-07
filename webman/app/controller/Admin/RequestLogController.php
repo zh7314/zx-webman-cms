@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace app\controller\Admin;
 
-use Illuminate\Http\Request;
-use App\Services\Admin\RequestLogService;
+use support\Request;
+use app\service\Admin\RequestLogService;
 use Throwable;
-use App\util\ResponseTrait;
+use app\util\ResponseTrait;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
-class RequestLogController extends Controller
+
+class RequestLogController 
 {
 
     use ResponseTrait;

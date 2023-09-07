@@ -2,10 +2,10 @@
 
 namespace app\service\Admin;
 
-use App\Models\Download;
+use app\model\Download;
 use Exception;
-use App\util\GlobalCode;
-use App\util\GlobalMsg;
+use app\util\GlobalCode;
+use app\util\GlobalMsg;
 
 class DownloadService
 {

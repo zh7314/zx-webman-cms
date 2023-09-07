@@ -1,34 +1,36 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace app\controller\Admin;
 
-use Illuminate\Http\Request;
-use App\Services\Admin\SeoService;
+use support\Request;
+use app\service\Admin\SeoService;
 use Throwable;
-use App\util\ResponseTrait;
+use app\util\ResponseTrait;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
-class SeoController extends Controller{
+
+class SeoController
+{
 
     use ResponseTrait;
 
-    public function getList(Request $request) {
+    public function getList(Request $request)
+    {
         try {
             $where = [];
-            $page = parameterCheck($request->page,'int',0);
-            $pageSize = parameterCheck($request->pageSize,'int',0);
+            $page = parameterCheck($request->page, 'int', 0);
+            $pageSize = parameterCheck($request->pageSize, 'int', 0);
 
-            $where['description']= parameterCheck($request->input('description'),'string','');
-$where['is_show']= parameterCheck($request->input('is_show'),'int',0);
-$where['keyword']= parameterCheck($request->input('keyword'),'string','');
-$where['lang']= parameterCheck($request->input('lang'),'string','');
-$where['platform']= parameterCheck($request->input('platform'),'string','');
-$where['position']= parameterCheck($request->input('position'),'string','');
-$where['sort']= parameterCheck($request->input('sort'),'int',0);
-$where['title']= parameterCheck($request->input('title'),'string','');
+            $where['description'] = parameterCheck($request->input('description'), 'string', '');
+            $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
+            $where['keyword'] = parameterCheck($request->input('keyword'), 'string', '');
+            $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
+            $where['platform'] = parameterCheck($request->input('platform'), 'string', '');
+            $where['position'] = parameterCheck($request->input('position'), 'string', '');
+            $where['sort'] = parameterCheck($request->input('sort'), 'int', 0);
+            $where['title'] = parameterCheck($request->input('title'), 'string', '');
 
-            $data = SeoService::getList($where,$page,$pageSize);
+            $data = SeoService::getList($where, $page, $pageSize);
 
             return $this->success($data);
         } catch (Throwable $e) {
@@ -36,18 +38,19 @@ $where['title']= parameterCheck($request->input('title'),'string','');
         }
     }
 
-    public function getAll(Request $request) {
+    public function getAll(Request $request)
+    {
         try {
             $where = [];
 
-            $where['description']= parameterCheck($request->input('description'),'string','');
-$where['is_show']= parameterCheck($request->input('is_show'),'int',0);
-$where['keyword']= parameterCheck($request->input('keyword'),'string','');
-$where['lang']= parameterCheck($request->input('lang'),'string','');
-$where['platform']= parameterCheck($request->input('platform'),'string','');
-$where['position']= parameterCheck($request->input('position'),'string','');
-$where['sort']= parameterCheck($request->input('sort'),'int',0);
-$where['title']= parameterCheck($request->input('title'),'string','');
+            $where['description'] = parameterCheck($request->input('description'), 'string', '');
+            $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
+            $where['keyword'] = parameterCheck($request->input('keyword'), 'string', '');
+            $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
+            $where['platform'] = parameterCheck($request->input('platform'), 'string', '');
+            $where['position'] = parameterCheck($request->input('position'), 'string', '');
+            $where['sort'] = parameterCheck($request->input('sort'), 'int', 0);
+            $where['title'] = parameterCheck($request->input('title'), 'string', '');
 
 
             $data = SeoService::getAll($where);
@@ -73,19 +76,20 @@ $where['title']= parameterCheck($request->input('title'),'string','');
         }
     }
 
-    public function add(Request $request) {
+    public function add(Request $request)
+    {
 
         DB::beginTransaction();
         try {
             $where = [];
-            $where['description']= parameterCheck($request->input('description'),'string','');
-$where['is_show']= parameterCheck($request->input('is_show'),'int',0);
-$where['keyword']= parameterCheck($request->input('keyword'),'string','');
-$where['lang']= parameterCheck($request->input('lang'),'string','');
-$where['platform']= parameterCheck($request->input('platform'),'string','');
-$where['position']= parameterCheck($request->input('position'),'string','');
-$where['sort']= parameterCheck($request->input('sort'),'int',0);
-$where['title']= parameterCheck($request->input('title'),'string','');
+            $where['description'] = parameterCheck($request->input('description'), 'string', '');
+            $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
+            $where['keyword'] = parameterCheck($request->input('keyword'), 'string', '');
+            $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
+            $where['platform'] = parameterCheck($request->input('platform'), 'string', '');
+            $where['position'] = parameterCheck($request->input('position'), 'string', '');
+            $where['sort'] = parameterCheck($request->input('sort'), 'int', 0);
+            $where['title'] = parameterCheck($request->input('title'), 'string', '');
 
             $data = SeoService::add($where);
 
@@ -97,20 +101,21 @@ $where['title']= parameterCheck($request->input('title'),'string','');
         }
     }
 
-    public function save(Request $request) {
+    public function save(Request $request)
+    {
 
         DB::beginTransaction();
         try {
             $where = [];
-            $where['id']= parameterCheck($request->id,'int',0);
-            $where['description']= parameterCheck($request->input('description'),'string','');
-$where['is_show']= parameterCheck($request->input('is_show'),'int',0);
-$where['keyword']= parameterCheck($request->input('keyword'),'string','');
-$where['lang']= parameterCheck($request->input('lang'),'string','');
-$where['platform']= parameterCheck($request->input('platform'),'string','');
-$where['position']= parameterCheck($request->input('position'),'string','');
-$where['sort']= parameterCheck($request->input('sort'),'int',0);
-$where['title']= parameterCheck($request->input('title'),'string','');
+            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['description'] = parameterCheck($request->input('description'), 'string', '');
+            $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
+            $where['keyword'] = parameterCheck($request->input('keyword'), 'string', '');
+            $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
+            $where['platform'] = parameterCheck($request->input('platform'), 'string', '');
+            $where['position'] = parameterCheck($request->input('position'), 'string', '');
+            $where['sort'] = parameterCheck($request->input('sort'), 'int', 0);
+            $where['title'] = parameterCheck($request->input('title'), 'string', '');
 
             $data = SeoService::save($where);
 
@@ -122,12 +127,13 @@ $where['title']= parameterCheck($request->input('title'),'string','');
         }
     }
 
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
 
         DB::beginTransaction();
         try {
             $where = [];
-            $where['id']= parameterCheck($request->id,'int',0);
+            $where['id'] = parameterCheck($request->id, 'int', 0);
             $data = SeoService::delete($where['id']);
 
             DB::commit();

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace app\controller\Admin;
 
-use Illuminate\Http\Request;
-use App\Services\Admin\AdminGroupService;
+use support\Request;
+use app\service\Admin\AdminGroupService;
 use Throwable;
-use App\util\ResponseTrait;
+use app\util\ResponseTrait;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
-class AdminGroupController extends Controller
+
+class AdminGroupController 
 {
 
     use ResponseTrait;

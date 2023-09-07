@@ -3,11 +3,10 @@
 namespace app\service\Admin;
 
 
-use App\Models\Admin;
-use App\Models\User;
+use app\model\Admin;
 use app\service\Admin\CommonService;
-use App\util\GlobalCode;
-use App\util\RedisCode;
+use app\util\GlobalCode;
+use app\util\RedisCode;
 use Illuminate\Support\Facades\Cookie;
 use Exception;
 use Illuminate\Support\Facades\Redis;

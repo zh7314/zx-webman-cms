@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace app\controller\Admin;
 
-use App\Services\Admin\CommonService;
-use Illuminate\Http\Request;
-use App\Services\Admin\DownloadCateService;
+use app\service\Admin\CommonService;
+use support\Request;
+use app\service\Admin\DownloadCateService;
 use Throwable;
-use App\util\ResponseTrait;
+use app\util\ResponseTrait;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
-class DownloadCateController extends Controller
+
+class DownloadCateController 
 {
 
     use ResponseTrait;

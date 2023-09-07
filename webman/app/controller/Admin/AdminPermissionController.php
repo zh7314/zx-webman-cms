@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace app\controller\Admin;
 
-use Illuminate\Http\Request;
-use App\Services\Admin\AdminPermissionService;
+use support\Request;
+use app\service\Admin\AdminPermissionService;
 use Throwable;
-use App\util\ResponseTrait;
+use app\util\ResponseTrait;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 
-class AdminPermissionController extends Controller{
+
+class AdminPermissionController {
 
     use ResponseTrait;
 
