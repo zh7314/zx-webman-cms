@@ -1,36 +1,28 @@
-# zx-webman-website
+# CMS, enterprise official website general PHP management system
 
-#### Description
-基于webman的CMS，企业官网等后台
-
-#### Software Architecture
-Software architecture description
-
-#### Installation
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+[中文文档](./README.md)
 
 
-#### Gitee Feature
+## Framework introduction
+[Laravel](https://github.com/laravel/laravel)   
+[SCUI](https://gitee.com/lolicode/scui)
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+
+### Back-end development component
+php 8.0     
+laravel 9.0     
+composer 2
+
+### Front-end development component
+scui 1.6.9      
+node v14.21.3       
+
+### effect picture
+![1.png](./laravel/doc/images/1.png)
+![2.png](./laravel/doc/images/2.png)
+![3.png](./laravel/doc/images/3.png)
+![4.png](./laravel/doc/images/4.png)
+![5.png](./laravel/doc/images/5.png)
+![6.png](./laravel/doc/images/6.png)
+![7.png](./laravel/doc/images/7.png)
+![8.png](./laravel/doc/images/8.png)
