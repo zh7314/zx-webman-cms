@@ -2,6 +2,7 @@
 
 namespace app\middleware;
 
+use support\Log;
 use Webman\MiddlewareInterface;
 use Webman\Http\Response;
 use Webman\Http\Request;
@@ -11,6 +12,9 @@ class  CrossDomain implements MiddlewareInterface
 {
     public function process(Request $request, callable $next): Response
     {
+
+        Log::info(self::class);
+
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
         header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With');

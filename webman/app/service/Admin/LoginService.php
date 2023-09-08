@@ -2,15 +2,9 @@
 
 namespace app\service\Admin;
 
-
 use app\model\Admin;
-use app\service\Admin\CommonService;
 use app\util\GlobalCode;
-use app\util\RedisCode;
-use Illuminate\Support\Facades\Cookie;
 use Exception;
-use Illuminate\Support\Facades\Redis;
-use Illuminate\Support\Facades\URL;
 
 class LoginService
 {
@@ -56,7 +50,7 @@ class LoginService
         $data['userInfo']['dashboard'] = '';
         $data['userInfo']['role'][] = ["SA", "admin", "Auditor"];
         $data['userInfo']['userId'] = $admin->id;
-        $data['userInfo']['avatar'] = URL::to($admin->avatar);
+        $data['userInfo']['avatar'] = $admin->avatar;
         $data['userInfo']['userName'] = $admin->real_name;
         $data['tokenTime'] = GlobalCode::TOKEN_TIME;
         $data['tokenKey'] = GlobalCode::API_TOKEN;

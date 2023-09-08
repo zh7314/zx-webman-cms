@@ -31,10 +31,11 @@ class IndexController
     {
         try {
 
-            $name = parameterCheck($request->username, 'string', '');
-            $password = parameterCheck($request->password, 'string', '');
-            $code = parameterCheck($request->code, 'string', '');
-            $captchaKey = parameterCheck($request->captchaKey, 'string', '');
+            $name = parameterCheck($request->input('username'), 'string', '');
+            $password = parameterCheck($request->input('password'), 'string', '');
+
+            $code = parameterCheck($request->input('code'), 'string', '');
+            $captchaKey = parameterCheck($request->input('captchaKey'), 'string', '');
 
             $data = LoginService::login($name, $password, $code, $captchaKey);
 
@@ -48,7 +49,7 @@ class IndexController
     {
         try {
 
-            $adminId = parameterCheck($request->admin_id, 'string', '');
+            $adminId = parameterCheck($request->input('admin_id'), 'string', '');
 
             $data = LoginService::logout($adminId);
 
@@ -62,7 +63,7 @@ class IndexController
     {
         try {
 
-            $adminId = parameterCheck($request->admin_id, 'string', '');
+            $adminId = parameterCheck($request->input('admin_id'), 'string', '');
 
             $data = LoginService::getInfo($adminId);
 
@@ -76,7 +77,7 @@ class IndexController
     {
         try {
 
-            $adminId = parameterCheck($request->admin_id, 'string', '');
+            $adminId = parameterCheck($request->input('admin_id'), 'string', '');
 
             $data = LoginService::getMenu($adminId);
 
@@ -141,7 +142,7 @@ class IndexController
         DB::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = LoginService::changePwd($where);
 
