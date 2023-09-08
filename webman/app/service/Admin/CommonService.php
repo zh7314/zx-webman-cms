@@ -12,10 +12,10 @@ use app\model\NewsCate;
 use app\model\ProductCate;
 use app\model\VideoCate;
 use Exception;
-use Illuminate\Http\UploadedFile;
 use app\util\GlobalCode;
 use ZX\Tools\File\SecurityCheck;
 use ZX\Tools\File\MimeTypes;
+use webman\Http\UploadFile;
 
 class CommonService
 {
@@ -240,9 +240,9 @@ class CommonService
     }
 
     //全局通用文件上传组件
-    public static function uploadFile(UploadedFile $uploadedFile, array $acceptExt, string $fileType = 'image')
+    public static function uploadFile(UploadFile $uploadedFile, array $acceptExt, string $fileType = 'image')
     {
-        $ext = $uploadedFile->clientExtension();
+        $ext = $uploadedFile->getUploadExtension();
         if (!in_array($ext, $acceptExt)) {
             throw new Exception('文件名后缀不允许');
         }
@@ -265,7 +265,7 @@ class CommonService
         }
 
         $fileName = getToken() . '.' . $ext;
-        $uploadedFile->move($allDir . DIRECTORY_SEPARATOR, $fileName);
+        $uploadedFile->move($allDir . DIRECTORY_SEPARATOR . $fileName);
         /*
          * 注意windows下返回的地址可能会出现双斜杠，linux不会
          * windows：http://www.la.com/upload\\image\\20230626\\15d092d9058b7c3ac1952c79ede5b411.jpg
@@ -277,7 +277,7 @@ class CommonService
     }
 
     //检测文件是否合法
-    public static function checkMimeType(UploadedFile $uploadedFile, string $ext = '')
+    public static function checkMimeType(UploadFile $uploadedFile, string $ext = '')
     {
         try {
             $filePath = $uploadedFile->getPathname();

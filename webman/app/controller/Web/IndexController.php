@@ -23,7 +23,7 @@ class IndexController
                 throw new Exception('未找到上传文件');
             }
             $data = CommonService::uploadFile($file, ['jpg', 'jpeg', 'png', 'mbp', 'gif']);
-            $data['src'] = URL::to($data['src']);
+//            $data['src'] = getResource($data['src']);
 
             return $this->success($data, '上传成功');
         } catch (Throwable $e) {

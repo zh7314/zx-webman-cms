@@ -13,26 +13,25 @@ class  CrossDomain implements MiddlewareInterface
     public function process(Request $request, callable $next): Response
     {
 
+//        $header = [
+//            'Access-Control-Allow-Credentials' => 'true',
+//            'Access-Control-Allow-Origin' => $request->header('origin', '*'),
+//            'Access-Control-Allow-Methods' => $request->header('access-control-request-method', '*'),
+//            'Access-Control-Allow-Headers' => $request->header('access-control-request-headers', '*'),
+//        ];
+//
+//        if ($request->method() === 'OPTIONS') {
+//            return response('200', 200, $header);
+//        } else {
+//            $response = $next($request);
+//            $response->withHeaders($header);
+//            return $response;
+//        }
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
+        header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With');
 
-        if ($request->method() == 'OPTIONS') {
-            Log::info('OPTIONS--------------------');
-            Log::info(json($request->all()));
-            Log::info(json($request->header()));
-            Log::info('OPTIONS--------------------');
-            return response('');
-        } else {
-            Log::info('request--------------------');
-            Log::info(json($request->all()));
-            Log::info(json($request->header()));
-            Log::info('request--------------------');
-            $response = $next($request);
-            $response->withHeaders([
-                'Access-Control-Allow-Credentials' => 'true',
-                'Access-Control-Allow-Origin' => $request->header('origin', '*'),
-                'Access-Control-Allow-Methods' => $request->header('access-control-request-method', '*'),
-                'Access-Control-Allow-Headers' => $request->header('access-control-request-headers', '*'),
-            ]);
-            return $response;
-        }
+        return $next($request);
     }
 }
