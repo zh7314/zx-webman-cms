@@ -13,25 +13,31 @@ class  CrossDomain implements MiddlewareInterface
     public function process(Request $request, callable $next): Response
     {
 
-        $header = [
+//        $header = [
+//            'Access-Control-Allow-Credentials' => 'true',
+//            'Access-Control-Allow-Origin' => $request->header('origin', '*'),
+//            'Access-Control-Allow-Methods' => $request->header('access-control-request-method', '*'),
+//            'Access-Control-Allow-Headers' => $request->header('access-control-request-headers', '*'),
+//        ];
+//
+//        if ($request->method() === 'OPTIONS') {
+//            return response('', 200, $header);
+//        } else {
+//            $response = $next($request);
+//            $response->withHeaders($header);
+//            return $response;
+//        }
+        // 如果是options请求则返回一个空响应，否则继续向洋葱芯穿越，并得到一个响应
+        $response = $request->method() == 'OPTIONS' ? response('') : $next($request);
+
+        // 给响应添加跨域相关的http头
+        $response->withHeaders([
             'Access-Control-Allow-Credentials' => 'true',
             'Access-Control-Allow-Origin' => $request->header('origin', '*'),
             'Access-Control-Allow-Methods' => $request->header('access-control-request-method', '*'),
             'Access-Control-Allow-Headers' => $request->header('access-control-request-headers', '*'),
-        ];
+        ]);
 
-        if ($request->method() === 'OPTIONS') {
-            return response('', 200, $header);
-        } else {
-            $response = $next($request);
-            $response->withHeaders($header);
-            return $response;
-        }
-
-//        header('Access-Control-Allow-Credentials: true');
-//        header('Access-Control-Allow-Origin: *');
-//        header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
-//        header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With');
-//        return $next($request);
+        return $response;
     }
 }

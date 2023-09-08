@@ -13,6 +13,7 @@
  */
 
 use Webman\Route;
+use support\Request;
 
 //首页
 Route::get('/', function ($rquest) {
@@ -278,8 +279,19 @@ Route::group('/api/admin', function () {
 });
 
 //请求不存在的url返回信息
-Route::fallback(function () {
-    return json(['code' => 404, 'msg' => '404 not found']);
+//Route::fallback(function () {
+//    return json(['code' => 404, 'msg' => '404 not found']);
+//});
+
+Route::fallback(function (Request $request) {
+    $response = strtoupper($request->method()) === 'OPTIONS' ? response('') : json(['code' => 404, 'msg' => '404 not found']);
+    $response->withHeaders([
+        'Access-Control-Allow-Credentials' => 'true',
+        'Access-Control-Allow-Origin' => "*",
+        'Access-Control-Allow-Methods' => '*',
+        'Access-Control-Allow-Headers' => '*',
+    ]);
+    return $response;
 });
 //关闭自动路由
 Route::disableDefaultRoute();
