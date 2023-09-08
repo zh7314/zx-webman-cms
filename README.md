@@ -18,12 +18,11 @@ scui 1.6.9
 node v14.21.3       
 
 ### 效果图
-![1.png](./laravel/doc/images/1.png)
-![2.png](./laravel/doc/images/2.png)
-![3.png](./laravel/doc/images/3.png)
-![4.png](./laravel/doc/images/4.png)
-![5.png](./laravel/doc/images/5.png)
-![6.png](./laravel/doc/images/6.png)
-![7.png](./laravel/doc/images/7.png)
-![8.png](./laravel/doc/images/8.png)
-
+![1.png](./images/1.png)
+![2.png](./images/2.png)
+![3.png](./images/3.png)
+![4.png](./images/4.png)
+![5.png](./images/5.png)
+![6.png](./images/6.png)
+![7.png](./images/7.png)
+![8.png](./images/8.png)
