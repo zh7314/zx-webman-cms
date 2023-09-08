@@ -13,12 +13,26 @@ class  CrossDomain implements MiddlewareInterface
     public function process(Request $request, callable $next): Response
     {
 
-        Log::info(self::class);
 
-        header('Access-Control-Allow-Origin: *');
-        header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
-        header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Requested-With');
-
-        return $next($request);
+        if ($request->method() == 'OPTIONS') {
+            Log::info('OPTIONS--------------------');
+            Log::info(json($request->all()));
+            Log::info(json($request->header()));
+            Log::info('OPTIONS--------------------');
+            return response('');
+        } else {
+            Log::info('request--------------------');
+            Log::info(json($request->all()));
+            Log::info(json($request->header()));
+            Log::info('request--------------------');
+            $response = $next($request);
+            $response->withHeaders([
+                'Access-Control-Allow-Credentials' => 'true',
+                'Access-Control-Allow-Origin' => $request->header('origin', '*'),
+                'Access-Control-Allow-Methods' => $request->header('access-control-request-method', '*'),
+                'Access-Control-Allow-Headers' => $request->header('access-control-request-headers', '*'),
+            ]);
+            return $response;
+        }
     }
 }

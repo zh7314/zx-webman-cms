@@ -6,6 +6,9 @@ use app\model\Admin;
 use app\util\GlobalCode;
 use Exception;
 
+//use Illuminate\Support\Facades\URL;
+use URL;
+
 class LoginService
 {
 

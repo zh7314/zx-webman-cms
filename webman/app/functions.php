@@ -1050,3 +1050,26 @@ if (!function_exists('mb_padding_str')) {
     }
 
 }
+
+if (!function_exists('getDomain')) {
+    function getDomain()
+    {
+        $https = request()->header('HTTPS');
+        $protocol = isset($https) && $https === 'on' ? 'https://' : 'http://';
+        $host = request()->header('HTTP_HOST') ?? request()->header('HOST');
+        $fullPath = $protocol . $host;
+        return $fullPath;
+    }
+}
+
+if (!function_exists('getResource')) {
+    function getResource(string $path = '')
+    {
+        if (empty($path)) {
+            return '';
+        }
+
+        $domain = getDomain();
+        return $domain . DIRECTORY_SEPARATOR . trim($path, '/');
+    }
+}

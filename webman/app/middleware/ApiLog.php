@@ -12,7 +12,7 @@ class  ApiLog implements MiddlewareInterface
 {
     public function process(Request $request, callable $next): Response
     {
-        Log::info(self::class);
+//        Log::info(self::class);
 
         return $next($request);
     }

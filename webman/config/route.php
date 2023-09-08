@@ -44,7 +44,7 @@ Route::group('/api/admin', function () {
     Route::post('/uploadFile', [\app\controller\Admin\IndexController::class, 'uploadFile']);//上传普通文件
 })->middleware([
     app\middleware\CrossDomain::class,
-    app\middleware\ApiLog::class,
+//    app\middleware\ApiLog::class,
 ]);
 
 ////后台接口，有权限

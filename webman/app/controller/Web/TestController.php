@@ -24,8 +24,6 @@ class TestController
 
         }
         return json($data);
-
-//        return route('ssssssssss');
     }
 
     public static function test(Request $request)
