@@ -42,7 +42,8 @@ Route::group('/api/admin', function () {
     Route::post('/uploadPic', [app\controller\Admin\IndexController::class, 'uploadPic']);//上传图片文件
     Route::post('/uploadFile', [app\controller\Admin\IndexController::class, 'uploadFile']);//上传普通文件
 })->middleware([
-    app\middleware\CrossDomain::class
+    app\middleware\CrossDomain::class,
+    app\middleware\AdminLog::class
 ]);
 
 ////后台接口，有权限
@@ -62,7 +63,7 @@ Route::group('/api/admin', function () {
     Route::post('/getVideoCateTree', [app\controller\Admin\IndexController::class, 'getVideoCateTree']);
     Route::post('/getBannerCateTree', [app\controller\Admin\IndexController::class, 'getBannerCateTree']);
 
-    Route::group('admin', function () {
+    Route::group('/admin', function () {
         Route::post('/getList', [app\controller\Admin\AdminController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\AdminController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\AdminController::class, 'getOne']);
@@ -71,7 +72,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\AdminController::class, 'delete']);
     });
 
-    Route::group('adminGroup', function () {
+    Route::group('/adminGroup', function () {
         Route::post('/getList', [app\controller\Admin\AdminGroupController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\AdminGroupController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\AdminGroupController::class, 'getOne']);
@@ -80,7 +81,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\AdminGroupController::class, 'delete']);
     });
 
-    Route::group('adminLog', function () {
+    Route::group('/adminLog', function () {
         Route::post('/getList', [app\controller\Admin\AdminLogController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\AdminLogController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\AdminLogController::class, 'getOne']);
@@ -89,7 +90,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\AdminLogController::class, 'delete']);
     });
 
-    Route::group('adminPermission', function () {
+    Route::group('/adminPermission', function () {
         Route::post('/getList', [app\controller\Admin\AdminPermissionController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\AdminPermissionController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\AdminPermissionController::class, 'getOne']);
@@ -98,7 +99,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\AdminPermissionController::class, 'delete']);
     });
 
-    Route::group('banner', function () {
+    Route::group('/banner', function () {
         Route::post('/getList', [app\controller\Admin\BannerController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\BannerController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\BannerController::class, 'getOne']);
@@ -107,7 +108,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\BannerController::class, 'delete']);
     });
 
-    Route::group('bannerCate', function () {
+    Route::group('/bannerCate', function () {
         Route::post('/getList', [app\controller\Admin\BannerCateController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\BannerCateController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\BannerCateController::class, 'getOne']);
@@ -116,7 +117,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\BannerCateController::class, 'delete']);
     });
 
-    Route::group('config', function () {
+    Route::group('/config', function () {
         Route::post('/getList', [app\controller\Admin\ConfigController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\ConfigController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\ConfigController::class, 'getOne']);
@@ -125,7 +126,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\ConfigController::class, 'delete']);
     });
 
-    Route::group('download', function () {
+    Route::group('/download', function () {
         Route::post('/getList', [app\controller\Admin\DownloadController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\DownloadController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\DownloadController::class, 'getOne']);
@@ -134,7 +135,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\DownloadController::class, 'delete']);
     });
 
-    Route::group('downloadCate', function () {
+    Route::group('/downloadCate', function () {
         Route::post('/getList', [app\controller\Admin\DownloadCateController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\DownloadCateController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\DownloadCateController::class, 'getOne']);
@@ -143,7 +144,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\DownloadCateController::class, 'delete']);
     });
 
-    Route::group('feedback', function () {
+    Route::group('/feedback', function () {
         Route::post('/getList', [app\controller\Admin\FeedbackController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\FeedbackController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\FeedbackController::class, 'getOne']);
@@ -152,7 +153,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\FeedbackController::class, 'delete']);
     });
 
-    Route::group('file', function () {
+    Route::group('/file', function () {
         Route::post('/getList', [app\controller\Admin\FileController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\FileController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\FileController::class, 'getOne']);
@@ -161,7 +162,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\FileController::class, 'delete']);
     });
 
-    Route::group('friendLink', function () {
+    Route::group('/friendLink', function () {
         Route::post('/getList', [app\controller\Admin\FriendLinkController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\FriendLinkController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\FriendLinkController::class, 'getOne']);
@@ -170,7 +171,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\FriendLinkController::class, 'delete']);
     });
 
-    Route::group('jobOffers', function () {
+    Route::group('/jobOffers', function () {
         Route::post('/getList', [app\controller\Admin\JobOffersController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\JobOffersController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\JobOffersController::class, 'getOne']);
@@ -179,7 +180,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\JobOffersController::class, 'delete']);
     });
 
-    Route::group('lang', function () {
+    Route::group('/lang', function () {
         Route::post('/getList', [app\controller\Admin\LangController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\LangController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\LangController::class, 'getOne']);
@@ -188,7 +189,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\LangController::class, 'delete']);
     });
 
-    Route::group('news', function () {
+    Route::group('/news', function () {
         Route::post('/getList', [app\controller\Admin\NewsController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\NewsController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\NewsController::class, 'getOne']);
@@ -197,7 +198,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\NewsController::class, 'delete']);
     });
 
-    Route::group('newsCate', function () {
+    Route::group('/newsCate', function () {
         Route::post('/getList', [app\controller\Admin\NewsCateController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\NewsCateController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\NewsCateController::class, 'getOne']);
@@ -206,7 +207,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\NewsCateController::class, 'delete']);
     });
 
-    Route::group('product', function () {
+    Route::group('/product', function () {
         Route::post('/getList', [app\controller\Admin\ProductController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\ProductController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\ProductController::class, 'getOne']);
@@ -215,7 +216,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\ProductController::class, 'delete']);
     });
 
-    Route::group('productCate', function () {
+    Route::group('/productCate', function () {
         Route::post('/getList', [app\controller\Admin\ProductCateController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\ProductCateController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\ProductCateController::class, 'getOne']);
@@ -224,7 +225,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\ProductCateController::class, 'delete']);
     });
 
-    Route::group('seo', function () {
+    Route::group('/seo', function () {
         Route::post('/getList', [app\controller\Admin\SeoController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\SeoController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\SeoController::class, 'getOne']);
@@ -233,7 +234,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\SeoController::class, 'delete']);
     });
 
-    Route::group('video', function () {
+    Route::group('/video', function () {
         Route::post('/getList', [app\controller\Admin\VideoController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\VideoController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\VideoController::class, 'getOne']);
@@ -242,7 +243,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\VideoController::class, 'delete']);
     });
 
-    Route::group('videoCate', function () {
+    Route::group('/videoCate', function () {
         Route::post('/getList', [app\controller\Admin\VideoCateController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\VideoCateController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\VideoCateController::class, 'getOne']);
@@ -250,7 +251,7 @@ Route::group('/api/admin', function () {
         Route::post('/save', [app\controller\Admin\VideoCateController::class, 'save']);
         Route::post('/delete', [app\controller\Admin\VideoCateController::class, 'delete']);
     });
-    Route::group('platform', function () {
+    Route::group('/platform', function () {
         Route::post('/getList', [app\controller\Admin\PlatformController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\PlatformController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\PlatformController::class, 'getOne']);
@@ -259,7 +260,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\PlatformController::class, 'delete']);
     });
 
-    Route::group('message', function () {
+    Route::group('/message', function () {
         Route::post('/getList', [app\controller\Admin\MessageController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\MessageController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\MessageController::class, 'getOne']);
@@ -268,7 +269,7 @@ Route::group('/api/admin', function () {
         Route::post('/delete', [app\controller\Admin\MessageController::class, 'delete']);
     });
 
-    Route::group('requestLog', function () {
+    Route::group('/requestLog', function () {
         Route::post('/getList', [app\controller\Admin\RequestLogController::class, 'getList']);
         Route::post('/getAll', [app\controller\Admin\RequestLogController::class, 'getAll']);
         Route::post('/getOne', [app\controller\Admin\RequestLogController::class, 'getOne']);
@@ -276,7 +277,11 @@ Route::group('/api/admin', function () {
         Route::post('/save', [app\controller\Admin\RequestLogController::class, 'save']);
         Route::post('/delete', [app\controller\Admin\RequestLogController::class, 'delete']);
     });
-});
+})->middleware([
+    app\middleware\CrossDomain::class,
+    app\middleware\AdminCheck::class,
+    app\middleware\AdminLog::class
+]);
 
 //请求不存在的url返回信息
 //Route::fallback(function () {
@@ -284,7 +289,7 @@ Route::group('/api/admin', function () {
 //});
 
 Route::fallback(function (Request $request) {
-    $response = strtoupper($request->method()) === 'OPTIONS' ? response('') : json(['code' => 404, 'msg' => '404 not found']);
+    $response = strtoupper($request->method()) === 'OPTIONS' ? response('', 204) : json(['code' => 404, 'msg' => '404 not found']);
     $response->withHeaders([
         'Access-Control-Allow-Credentials' => 'true',
         'Access-Control-Allow-Origin' => "*",

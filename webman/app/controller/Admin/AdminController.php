@@ -70,7 +70,7 @@ class AdminController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->admin_id, 'int', 0);
 
             $data = AdminService::getOne($where['id']);
 

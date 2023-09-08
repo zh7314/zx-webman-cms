@@ -76,8 +76,7 @@ class IndexController
     public function getMenu(Request $request)
     {
         try {
-
-            $adminId = parameterCheck($request->input('admin_id'), 'string', '');
+            $adminId = parameterCheck($request->admin_id, 'int', 0);
 
             $data = LoginService::getMenu($adminId);
 
