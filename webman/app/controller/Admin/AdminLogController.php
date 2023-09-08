@@ -6,7 +6,7 @@ use support\Request;
 use app\service\Admin\AdminLogService;
 use Throwable;
 use app\util\ResponseTrait;
-use Illuminate\Support\Facades\DB;
+use support\Db;
 
 
 class AdminLogController 
@@ -81,7 +81,7 @@ class AdminLogController
     public function add(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'float', 0);
@@ -96,10 +96,10 @@ class AdminLogController
 
             $data = AdminLogService::add($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -107,7 +107,7 @@ class AdminLogController
     public function save(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
@@ -123,10 +123,10 @@ class AdminLogController
 
             $data = AdminLogService::save($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -134,16 +134,16 @@ class AdminLogController
     public function delete(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
             $data = AdminLogService::delete($where['id']);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }

@@ -6,7 +6,7 @@ use support\Request;
 use app\service\Admin\VideoService;
 use Throwable;
 use app\util\ResponseTrait;
-use Illuminate\Support\Facades\DB;
+use support\Db;
 
 
 class VideoController 
@@ -89,7 +89,7 @@ class VideoController
     public function add(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'int', 0);
@@ -108,10 +108,10 @@ class VideoController
 
             $data = VideoService::add($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -119,7 +119,7 @@ class VideoController
     public function save(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
@@ -139,10 +139,10 @@ class VideoController
 
             $data = VideoService::save($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -150,16 +150,16 @@ class VideoController
     public function delete(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
             $data = VideoService::delete($where['id']);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }

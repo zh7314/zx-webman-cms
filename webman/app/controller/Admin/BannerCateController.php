@@ -6,7 +6,7 @@ use support\Request;
 use app\service\Admin\BannerCateService;
 use Throwable;
 use app\util\ResponseTrait;
-use Illuminate\Support\Facades\DB;
+use support\Db;
 
 
 class BannerCateController 
@@ -77,7 +77,7 @@ class BannerCateController
     public function add(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
@@ -90,10 +90,10 @@ class BannerCateController
 
             $data = BannerCateService::add($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -101,7 +101,7 @@ class BannerCateController
     public function save(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
@@ -115,10 +115,10 @@ class BannerCateController
 
             $data = BannerCateService::save($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -126,16 +126,16 @@ class BannerCateController
     public function delete(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
             $data = BannerCateService::delete($where['id']);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }

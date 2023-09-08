@@ -6,7 +6,7 @@ use support\Request;
 use app\service\Admin\NewsCateService;
 use Throwable;
 use app\util\ResponseTrait;
-use Illuminate\Support\Facades\DB;
+use support\Db;
 
 
 class NewsCateController 
@@ -75,7 +75,7 @@ class NewsCateController
     public function add(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
@@ -87,10 +87,10 @@ class NewsCateController
 
             $data = NewsCateService::add($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -98,7 +98,7 @@ class NewsCateController
     public function save(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
@@ -111,10 +111,10 @@ class NewsCateController
 
             $data = NewsCateService::save($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -122,16 +122,16 @@ class NewsCateController
     public function delete(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
             $data = NewsCateService::delete($where['id']);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }

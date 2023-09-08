@@ -6,7 +6,7 @@ use support\Request;
 use app\service\Admin\AdminPermissionService;
 use Throwable;
 use app\util\ResponseTrait;
-use Illuminate\Support\Facades\DB;
+use support\Db;
 
 
 class AdminPermissionController {
@@ -75,7 +75,7 @@ $where['sort']= parameterCheck($request->input('sort'),'int',0);
 
     public function add(Request $request) {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['component']= parameterCheck($request->input('component'),'string','');
@@ -89,17 +89,17 @@ $where['sort']= parameterCheck($request->input('sort'),'int',0);
 
             $data = AdminPermissionService::add($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
 
     public function save(Request $request) {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id']= parameterCheck($request->id,'int',0);
@@ -114,26 +114,26 @@ $where['sort']= parameterCheck($request->input('sort'),'int',0);
 
             $data = AdminPermissionService::save($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
 
     public function delete(Request $request) {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id']= parameterCheck($request->id,'int',0);
             $data = AdminPermissionService::delete($where['id']);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }

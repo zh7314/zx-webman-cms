@@ -6,7 +6,7 @@ use support\Request;
 use app\service\Admin\AdminGroupService;
 use Throwable;
 use app\util\ResponseTrait;
-use Illuminate\Support\Facades\DB;
+use support\Db;
 
 
 class AdminGroupController 
@@ -71,7 +71,7 @@ class AdminGroupController
     public function add(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
@@ -81,10 +81,10 @@ class AdminGroupController
 
             $data = AdminGroupService::add($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -92,7 +92,7 @@ class AdminGroupController
     public function save(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
@@ -103,10 +103,10 @@ class AdminGroupController
 
             $data = AdminGroupService::save($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
@@ -114,16 +114,16 @@ class AdminGroupController
     public function delete(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->id, 'int', 0);
             $data = AdminGroupService::delete($where['id']);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }

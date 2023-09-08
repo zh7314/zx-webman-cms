@@ -5,8 +5,7 @@ namespace app\controller\Admin;
 
 use app\service\Admin\CommonService;
 use app\service\Admin\LoginService;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\URL;
+use support\Db;
 use Throwable;
 use Exception;
 use app\util\ResponseTrait;
@@ -96,7 +95,7 @@ class IndexController
                 throw new Exception('未找到上传文件');
             }
             $data = CommonService::uploadFile($file, ['jpg', 'jpeg', 'png', 'mbp', 'gif']);
-            $data['src'] = URL::to($data['src']);
+//            $data['src'] = getResource($data['src']);
 
             return $this->success($data, '上传成功');
         } catch (Throwable $e) {
@@ -113,7 +112,7 @@ class IndexController
                 throw new Exception('未找到上传文件');
             }
             $data = CommonService::uploadFile($file, ['xls', 'xlsx', 'pdf', 'xls', 'xlsx', 'doc', 'docx', 'ppt', 'zip', 'pptx', 'mp4', 'flv'], 'file');
-            $data['src'] = URL::to($data['src']);
+//            $data['src'] = getResource($data['src']);
 
             return $this->success($data, '上传成功');
         } catch (Throwable $e) {
@@ -138,17 +137,17 @@ class IndexController
     public function changePwd(Request $request)
     {
 
-        DB::beginTransaction();
+        Db::beginTransaction();
         try {
             $where = [];
             $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = LoginService::changePwd($where);
 
-            DB::commit();
+            Db::commit();
             return $this->success($data);
         } catch (Throwable $e) {
-            DB::rollBack();
+            Db::rollBack();
             return $this->fail($e);
         }
     }
