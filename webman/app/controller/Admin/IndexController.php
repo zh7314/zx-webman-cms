@@ -48,7 +48,7 @@ class IndexController
     {
         try {
 
-            $adminId = parameterCheck($request->input('admin_id'), 'string', '');
+            $adminId = parameterCheck($request->admin_id, 'int', 0);
 
             $data = LoginService::logout($adminId);
 
@@ -62,7 +62,7 @@ class IndexController
     {
         try {
 
-            $adminId = parameterCheck($request->input('admin_id'), 'string', '');
+            $adminId = parameterCheck($request->admin_id, 'int', 0);
 
             $data = LoginService::getInfo($adminId);
 
@@ -126,8 +126,6 @@ class IndexController
 
             $data = LoginService::getVersion();
 
-//            return $this->grant(new Exception('sssss'));
-
             return $this->success($data);
         } catch (Throwable $e) {
             return $this->fail($e);
@@ -140,7 +138,11 @@ class IndexController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
+            $where['id'] = parameterCheck($request->admin_id, 'int', 0);
+
+            $where['userPassword'] = parameterCheck($request->input('userPassword'), 'string', '');
+            $where['newPassword'] = parameterCheck($request->input('newPassword'), 'string', '');
+            $where['confirmNewPassword'] = parameterCheck($request->input('confirmNewPassword'), 'string', '');
 
             $data = LoginService::changePwd($where);
 

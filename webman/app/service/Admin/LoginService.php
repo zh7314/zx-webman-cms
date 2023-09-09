@@ -139,13 +139,39 @@ class LoginService
 
     public static function getVersion()
     {
-        $data = '1.6.9';
-        return $data;
+        return '1.6.9';
     }
 
-    public static function changePwd()
+    public static function changePwd(array $where = [])
     {
-        $data = '1.6.9';
-        return $data;
+        if (empty($where['id'])) {
+            throw new Exception('用户id不能为空');
+        }
+        if (empty($where['userPassword'])) {
+            throw new Exception('用户密码不能为空');
+        }
+        if (empty($where['newPassword'])) {
+            throw new Exception('用户新密码不能为空');
+        }
+        if (empty($where['confirmNewPassword'])) {
+            throw new Exception('用户新确认密码不能为空');
+        }
+        $admin = Admin::where('id', $where['id'])->first();
+        if ($admin == null) {
+            throw new Exception('该用户不存在');
+        }
+
+        if (md5(md5($where['userPassword'] . $admin->salt)) !== (string)$admin->password) {
+            throw new Exception('用户密码错误');
+        }
+        if ($where['newPassword'] != $where['confirmNewPassword']) {
+            throw new Exception('新密码不一样');
+        }
+        $admin->password = md5(md5($where['newPassword'] . $admin->salt));
+        $res = $admin->save();
+        if ($res == false) {
+            throw new Exception('修改密码失败');
+        }
+        return $res;
     }
 }
