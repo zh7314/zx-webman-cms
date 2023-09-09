@@ -19,8 +19,8 @@ class DownloadCateController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
             $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
@@ -65,7 +65,7 @@ class DownloadCateController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = DownloadCateService::getOne($where['id']);
 
@@ -105,7 +105,7 @@ class DownloadCateController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
             $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
@@ -130,7 +130,7 @@ class DownloadCateController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = DownloadCateService::delete($where['id']);
 
             Db::commit();

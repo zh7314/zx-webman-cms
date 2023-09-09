@@ -18,8 +18,8 @@ class ProductController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'int', 0);
             $where['content'] = parameterCheck($request->input('content'), 'string', '');
@@ -82,7 +82,7 @@ class ProductController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = ProductService::getOne($where['id']);
 
@@ -131,7 +131,7 @@ class ProductController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'int', 0);
             $where['content'] = parameterCheck($request->input('content'), 'string', '');
             $where['end_time'] = parameterCheck($request->input('end_time'), 'string', '');
@@ -165,7 +165,7 @@ class ProductController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = ProductService::delete($where['id']);
 
             Db::commit();

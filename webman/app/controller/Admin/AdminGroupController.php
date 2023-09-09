@@ -18,8 +18,8 @@ class AdminGroupController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
             $where['parent_id'] = parameterCheck($request->input('parent_id'), 'float', 0);
@@ -58,7 +58,7 @@ class AdminGroupController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = AdminGroupService::getOne($where['id']);
 
@@ -95,7 +95,7 @@ class AdminGroupController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
             $where['parent_id'] = parameterCheck($request->input('parent_id'), 'float', 0);
             $where['permission_ids'] = parameterCheck($request->input('permission_ids'), 'array', []);
@@ -117,7 +117,7 @@ class AdminGroupController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = AdminGroupService::delete($where['id']);
 
             Db::commit();

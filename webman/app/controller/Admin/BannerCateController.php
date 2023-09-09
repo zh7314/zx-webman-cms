@@ -18,8 +18,8 @@ class BannerCateController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
@@ -64,7 +64,7 @@ class BannerCateController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = BannerCateService::getOne($where['id']);
 
@@ -104,7 +104,7 @@ class BannerCateController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
             $where['sort'] = parameterCheck($request->input('sort'), 'int', 0);
@@ -129,7 +129,7 @@ class BannerCateController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = BannerCateService::delete($where['id']);
 
             Db::commit();

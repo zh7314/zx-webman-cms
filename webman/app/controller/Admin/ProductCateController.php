@@ -18,8 +18,8 @@ class ProductCateController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['description'] = parameterCheck($request->input('description'), 'string', '');
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
@@ -68,7 +68,7 @@ class ProductCateController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = ProductCateService::getOne($where['id']);
 
@@ -110,7 +110,7 @@ class ProductCateController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['description'] = parameterCheck($request->input('description'), 'string', '');
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
             $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
@@ -137,7 +137,7 @@ class ProductCateController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = ProductCateService::delete($where['id']);
 
             Db::commit();

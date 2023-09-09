@@ -18,8 +18,8 @@ class LangController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
             $where['sort'] = parameterCheck($request->input('sort'), 'int', 0);
@@ -56,7 +56,7 @@ class LangController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = LangService::getOne($where['id']);
 
@@ -92,7 +92,7 @@ class LangController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
             $where['sort'] = parameterCheck($request->input('sort'), 'int', 0);
             $where['value'] = parameterCheck($request->input('value'), 'string', '');
@@ -113,7 +113,7 @@ class LangController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = LangService::delete($where['id']);
 
             Db::commit();

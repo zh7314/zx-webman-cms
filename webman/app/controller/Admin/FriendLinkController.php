@@ -18,8 +18,8 @@ class FriendLinkController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['is_follow'] = parameterCheck($request->input('is_follow'), 'int', 0);
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
@@ -66,7 +66,7 @@ class FriendLinkController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = FriendLinkService::getOne($where['id']);
 
@@ -107,7 +107,7 @@ class FriendLinkController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['is_follow'] = parameterCheck($request->input('is_follow'), 'int', 0);
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
             $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
@@ -133,7 +133,7 @@ class FriendLinkController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = FriendLinkService::delete($where['id']);
 
             Db::commit();

@@ -18,8 +18,8 @@ class FeedbackController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['contact'] = parameterCheck($request->input('contact'), 'string', '');
             $where['content'] = parameterCheck($request->input('content'), 'string', '');
@@ -60,7 +60,7 @@ class FeedbackController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = FeedbackService::getOne($where['id']);
 
@@ -98,7 +98,7 @@ class FeedbackController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['contact'] = parameterCheck($request->input('contact'), 'string', '');
             $where['content'] = parameterCheck($request->input('content'), 'string', '');
             $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
@@ -121,7 +121,7 @@ class FeedbackController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = FeedbackService::delete($where['id']);
 
             Db::commit();

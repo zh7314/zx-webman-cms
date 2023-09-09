@@ -17,8 +17,8 @@ class AdminController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['avatar'] = parameterCheck($request->input('avatar'), 'string', '');
             $where['email'] = parameterCheck($request->input('email'), 'string', '');
@@ -116,7 +116,7 @@ class AdminController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['admin_group_ids'] = parameterCheck($request->input('admin_group_ids'), 'array', []);
             $where['avatar'] = parameterCheck($request->input('avatar'), 'string', '');
             $where['email'] = parameterCheck($request->input('email'), 'string', '');
@@ -149,7 +149,7 @@ class AdminController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = AdminService::delete($where['id']);
 

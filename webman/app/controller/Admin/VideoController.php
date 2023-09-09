@@ -18,8 +18,8 @@ class VideoController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'int', 0);
             $where['count'] = parameterCheck($request->input('count'), 'int', 0);
@@ -76,7 +76,7 @@ class VideoController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = VideoService::getOne($where['id']);
 
@@ -122,7 +122,7 @@ class VideoController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'int', 0);
             $where['count'] = parameterCheck($request->input('count'), 'int', 0);
             $where['file'] = parameterCheck($request->input('file'), 'string', '');
@@ -153,7 +153,7 @@ class VideoController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = VideoService::delete($where['id']);
 
             Db::commit();

@@ -18,8 +18,8 @@ class DownloadController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'float', 0);
             $where['download_cate_id'] = parameterCheck($request->input('download_cate_id'), 'float', 0);
@@ -74,7 +74,7 @@ class DownloadController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = DownloadService::getOne($where['id']);
 
@@ -119,7 +119,7 @@ class DownloadController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'float', 0);
             $where['download_cate_id'] = parameterCheck($request->input('download_cate_id'), 'float', 0);
             $where['introduction'] = parameterCheck($request->input('introduction'), 'string', '');
@@ -149,7 +149,7 @@ class DownloadController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = DownloadService::delete($where['id']);
 
             Db::commit();

@@ -18,8 +18,8 @@ class RequestLogController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['method'] = parameterCheck($request->input('method'), 'string', '');
             $where['ip'] = parameterCheck($request->input('ip'), 'string', '');
@@ -65,7 +65,7 @@ class RequestLogController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = RequestLogService::getOne($where['id']);
 
@@ -105,7 +105,7 @@ class RequestLogController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['method'] = parameterCheck($request->input('method'), 'string', '');
             $where['ip'] = parameterCheck($request->input('ip'), 'string', '');
             $where['url'] = parameterCheck($request->input('url'), 'string', '');
@@ -130,7 +130,7 @@ class RequestLogController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = RequestLogService::delete($where['id']);
 
             Db::commit();

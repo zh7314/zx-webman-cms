@@ -18,8 +18,8 @@ class ConfigController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
             $where['value'] = parameterCheck($request->input('value'), 'string', '');
@@ -54,7 +54,7 @@ class ConfigController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = ConfigService::getOne($where['id']);
 
@@ -89,7 +89,7 @@ class ConfigController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['name'] = parameterCheck($request->input('name'), 'string', '');
             $where['value'] = parameterCheck($request->input('value'), 'string', '');
 
@@ -109,7 +109,7 @@ class ConfigController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = ConfigService::delete($where['id']);
 
             Db::commit();

@@ -18,8 +18,8 @@ class FileController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'float', 0);
             $where['file_name'] = parameterCheck($request->input('file_name'), 'string', '');
@@ -58,7 +58,7 @@ class FileController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = FileService::getOne($where['id']);
 
@@ -95,7 +95,7 @@ class FileController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'float', 0);
             $where['file_name'] = parameterCheck($request->input('file_name'), 'string', '');
             $where['file_path'] = parameterCheck($request->input('file_path'), 'string', '');
@@ -117,7 +117,7 @@ class FileController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = FileService::delete($where['id']);
 
             Db::commit();

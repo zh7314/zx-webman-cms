@@ -18,8 +18,8 @@ class JobOffersController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['content'] = parameterCheck($request->input('content'), 'string', '');
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
@@ -70,7 +70,7 @@ class JobOffersController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = JobOffersService::getOne($where['id']);
 
@@ -113,7 +113,7 @@ class JobOffersController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['content'] = parameterCheck($request->input('content'), 'string', '');
             $where['is_show'] = parameterCheck($request->input('is_show'), 'int', 0);
             $where['lang'] = parameterCheck($request->input('lang'), 'string', '');
@@ -141,7 +141,7 @@ class JobOffersController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = JobOffersService::delete($where['id']);
 
             Db::commit();

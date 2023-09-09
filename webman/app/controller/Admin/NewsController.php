@@ -18,8 +18,8 @@ class NewsController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['count'] = parameterCheck($request->input('count'), 'int', 0);
             $where['end_time'] = parameterCheck($request->input('end_time'), 'string', '');
@@ -80,7 +80,7 @@ class NewsController
         try {
             $where = [];
 
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
 
             $data = NewsService::getOne($where['id']);
 
@@ -130,7 +130,7 @@ class NewsController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $where['admin_id'] = parameterCheck($request->input('admin_id'), 'int', 0);
             $where['content'] = parameterCheck($request->input('content'), 'string', '');
             $where['count'] = parameterCheck($request->input('count'), 'int', 0);
@@ -165,7 +165,7 @@ class NewsController
         Db::beginTransaction();
         try {
             $where = [];
-            $where['id'] = parameterCheck($request->id, 'int', 0);
+            $where['id'] = parameterCheck($request->input('id'), 'int', 0);
             $data = NewsService::delete($where['id']);
 
             Db::commit();
