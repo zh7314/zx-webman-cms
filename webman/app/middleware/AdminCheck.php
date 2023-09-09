@@ -39,9 +39,6 @@ class  AdminCheck implements MiddlewareInterface
             $request->admin_id = $admin->id;
             $request->token = $token;
 
-//            p($request->admin_id);
-//            p($request->token);
-
             $request_url = $request->path();
             try {
                 //权限验证
