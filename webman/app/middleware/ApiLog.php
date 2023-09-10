@@ -17,9 +17,9 @@ class  ApiLog implements MiddlewareInterface
     {
         $log = new RequestLog();
         $log->method = $request->method();
-        $log->ip = $request->ip() == '127.0.0.1' ? $request->header('x-real-ip', '127.0.0.1') : $request->ip();
+        $log->ip = $request->getRealIp();
         $log->url = $request->path();
-        $log->params = json_encode([$request->all(), $request->getContent()], JSON_UNESCAPED_UNICODE);
+        $log->params = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
         $header_array = array_intersect_key($request->header(), array_flip(['referer', 'authorization', 'x-real-ip', 'x-forwarded-for']));
 
         $log->header = json_encode($header_array, JSON_UNESCAPED_UNICODE);

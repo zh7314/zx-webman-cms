@@ -28,10 +28,13 @@ Route::group('/', function () {
 //前台，api有权限
 Route::group('/open', function () {
 
-    Route::get('/test', [app\controller\Web\TestController::class, 'index']);
+    Route::get('/test', [app\controller\Web\TestController::class, 'index'])->name('测试');
     Route::post('/uploadPic', [app\controller\Web\IndexController::class, 'uploadPic']);//上传图片文件
     Route::post('/uploadFile', [app\controller\Web\IndexController::class, 'uploadFile']);//上传普通文件
-});
+})->middleware([
+    app\middleware\CrossDomain::class,
+    app\middleware\ApiLog::class
+]);
 
 //后台接口，没权限
 Route::group('/api/admin', function () {
@@ -49,7 +52,7 @@ Route::group('/api/admin', function () {
 ////后台接口，有权限
 Route::group('/api/admin', function () {
 
-    Route::post('/getMenu', [app\controller\Admin\IndexController::class, 'getMenu']); //获取菜单信息
+    Route::post('/getMenu', [app\controller\Admin\IndexController::class, 'getMenu'])->name('获取菜单信息'); //获取菜单信息
     Route::post('/getInfo', [app\controller\Admin\IndexController::class, 'getInfo']); //获取用户信息
     Route::post('/logout', [app\controller\Admin\IndexController::class, 'logout']); //登出
     Route::post('/getVersion', [app\controller\Admin\IndexController::class, 'getVersion']); //获取版本信息

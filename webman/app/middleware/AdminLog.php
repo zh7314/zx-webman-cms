@@ -18,11 +18,11 @@ class  AdminLog implements MiddlewareInterface
         $log = new Log();
         $log->method = $request->method();
         $log->url = $request->path();
-        $log->route_name = $request->route()->getName();
+        $log->route_name = $request->route->getName();
 //        $adminLog->route_path = $request->getRequestUri();
         $log->path = $request->url();
-        $log->request_ip = $request->ip();
-        $log->data = json_encode($request->input(), JSON_UNESCAPED_UNICODE);
+        $log->request_ip = $request->getRealIp();
+        $log->data = json_encode($request->all(), JSON_UNESCAPED_UNICODE);
 
         if (!empty($request->admin_id)) {
             $admin = Admin::where('id', $request->admin_id)->first();
@@ -34,7 +34,7 @@ class  AdminLog implements MiddlewareInterface
                 $log->admin_name = $admin->real_name;
             }
         }
-        $adminPermission = AdminPermission::where('path', $request->getRequestUri())->first();
+        $adminPermission = AdminPermission::where('path', $request->path())->first();
         if ($adminPermission !== null) {
             $log->route_desc = $adminPermission->name;
         }

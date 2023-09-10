@@ -19,31 +19,32 @@ class TestController
 //            $data[$k]['Middleware'] = $route->getMiddleware();
 //
 //        }
-//        $data['path'] = $request->path();
-//        $data['host'] = $request->host();
-//        $data['host1'] = $request->host(true);
-//        $data['uri'] = $request->uri();
-//        $data['query'] = $request->queryString();
-//
-//        $data['fullUrl'] = $request->fullUrl();
-//        $data['remoteIp'] = $request->getRemoteIp();
-//
-//        $data['remotePort'] = $request->getRemotePort();
-//        $data['realIp'] = $request->getRealIp();
-//        $data['realIp1'] = $request->getRealIp(false);
-//        $data['localIp'] = $request->getLocalIp();
-//        $data['localPort'] = $request->getLocalPort();
-//
-//        $data['app'] = $request->app;
-//        $data['controller'] = $request->controller;
-//        $data['action'] = $request->action;
-//
-//        $data['header'] = $request->header();
-//        $data['rawBody'] = $request->rawBody();
-//        $data['rawHead'] = $request->rawHead();
-//
-//        $data['method'] = $request->method();
-//        $data['token'] = $request->header(GlobalCode::API_TOKEN, '');
+        $data['path'] = $request->path();
+        $data['host'] = $request->host();
+        $data['host1'] = $request->host(true);
+        $data['uri'] = $request->uri();
+        $data['query'] = $request->queryString();
+
+        $data['fullUrl'] = $request->fullUrl();
+        $data['remoteIp'] = $request->getRemoteIp();
+
+        $data['remotePort'] = $request->getRemotePort();
+        $data['realIp'] = $request->getRealIp();
+        $data['realIp1'] = $request->getRealIp(false);
+        $data['localIp'] = $request->getLocalIp();
+        $data['localPort'] = $request->getLocalPort();
+
+        $data['app'] = $request->app;
+        $data['controller'] = $request->controller;
+        $data['action'] = $request->action;
+
+        $data['header'] = $request->header();
+        $data['rawBody'] = $request->rawBody();
+        $data['rawHead'] = $request->rawHead();
+
+        $data['method'] = $request->method();
+        $data['token'] = $request->header(GlobalCode::API_TOKEN, '');
+        $data['name'] = $request->route->getName();
 
         return json($data);
     }

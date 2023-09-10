@@ -3,7 +3,7 @@
  * Here is your custom functions.
  */
 
-use Illuminate\Http\JsonResponse;
+use support\Response;
 
 if (!function_exists('https_request')) {
 
@@ -1071,5 +1071,12 @@ if (!function_exists('getResource')) {
 
         $domain = getDomain();
         return $domain . DIRECTORY_SEPARATOR . trim($path, '/');
+    }
+}
+
+if (!function_exists('returnJson')) {
+    function returnJson(mixed $data = null, int $status = 200, array $headers = [], int $options = JSON_UNESCAPED_UNICODE): Response
+    {
+        return new Response($status, ['Content-Type' => 'application/json'], json_encode($data, $options));
     }
 }
