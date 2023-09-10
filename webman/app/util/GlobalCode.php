@@ -12,6 +12,8 @@ interface GlobalCode
     const FAIL = 400;
     //需要授权
     const GRANT = 401;
+    //没有找到
+    const NOT_FOUND = 404;
     //数据库 状态定义 10 正常 99删除
     const NORMAL = 10;
     const DELETE = 99;

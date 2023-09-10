@@ -6,7 +6,6 @@ use app\service\Admin\CommonService;
 use app\util\ResponseTrait;
 use Exception;
 use support\Request;
-use Illuminate\Support\Facades\URL;
 use Throwable;
 
 
@@ -23,7 +22,6 @@ class IndexController
                 throw new Exception('未找到上传文件');
             }
             $data = CommonService::uploadFile($file, ['jpg', 'jpeg', 'png', 'mbp', 'gif']);
-//            $data['src'] = getResource($data['src']);
 
             return $this->success($data, '上传成功');
         } catch (Throwable $e) {
@@ -40,7 +38,6 @@ class IndexController
                 throw new Exception('未找到上传文件');
             }
             $data = CommonService::uploadFile($file, ['xls', 'xlsx', 'pdf', 'xls', 'xlsx', 'doc', 'docx', 'ppt', 'zip', 'pptx', 'mp4', 'flv'], 'file');
-            $data['src'] = URL::to($data['src']);
 
             return $this->success($data, '上传成功');
         } catch (Throwable $e) {
@@ -57,7 +54,6 @@ class IndexController
                 throw new Exception('未找到上传文件');
             }
             $data = CommonService::uploadFile($file, ['jpg', 'jpeg', 'png', 'mbp', 'gif']);
-            $data['src'] = URL::to($data['src']);
 
             return $this->success($data, '上传成功');
         } catch (Throwable $e) {

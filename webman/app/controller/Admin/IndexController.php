@@ -95,7 +95,6 @@ class IndexController
                 throw new Exception('未找到上传文件');
             }
             $data = CommonService::uploadFile($file, ['jpg', 'jpeg', 'png', 'mbp', 'gif']);
-//            $data['src'] = getResource($data['src']);
 
             return $this->success($data, '上传成功');
         } catch (Throwable $e) {
@@ -112,7 +111,6 @@ class IndexController
                 throw new Exception('未找到上传文件');
             }
             $data = CommonService::uploadFile($file, ['xls', 'xlsx', 'pdf', 'xls', 'xlsx', 'doc', 'docx', 'ppt', 'zip', 'pptx', 'mp4', 'flv'], 'file');
-//            $data['src'] = getResource($data['src']);
 
             return $this->success($data, '上传成功');
         } catch (Throwable $e) {

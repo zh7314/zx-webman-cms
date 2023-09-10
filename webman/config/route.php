@@ -12,6 +12,7 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+use app\util\GlobalCode;
 use Webman\Route;
 use support\Request;
 
@@ -287,12 +288,8 @@ Route::group('/api/admin', function () {
 ]);
 
 //请求不存在的url返回信息
-//Route::fallback(function () {
-//    return json(['code' => 404, 'msg' => '404 not found']);
-//});
-
 Route::fallback(function (Request $request) {
-    $response = strtoupper($request->method()) === 'OPTIONS' ? response('', 204) : json(['code' => 404, 'msg' => '404 not found']);
+    $response = strtoupper($request->method()) === 'OPTIONS' ? response('', 204) : returnJson([GlobalCode::CODE => GlobalCode::NOT_FOUND, GlobalCode::MSG => '404 not found', GlobalCode::DATA => '']);
     $response->withHeaders([
         'Access-Control-Allow-Credentials' => 'true',
         'Access-Control-Allow-Origin' => "*",
@@ -301,6 +298,7 @@ Route::fallback(function (Request $request) {
     ]);
     return $response;
 });
+
 //关闭自动路由
 Route::disableDefaultRoute();
 

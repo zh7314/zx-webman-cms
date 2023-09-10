@@ -10,24 +10,24 @@ trait ResponseTrait
 {
     public function success(mixed $data = '', string $msg = GlobalMsg::SUCCESS)
     {
-        return json([GlobalCode::CODE => GlobalCode::SUCCESS, GlobalCode::MSG => $msg, GlobalCode::DATA => $data]);
+        return returnJson([GlobalCode::CODE => GlobalCode::SUCCESS, GlobalCode::MSG => $msg, GlobalCode::DATA => $data]);
     }
 
     public function fail(Throwable $e, $status = 200, array $headers = [])
     {
         if (request()->input('debug') == GlobalCode::DEBUG || config('app.debug')) {
-            return json([GlobalCode::CODE => GlobalCode::FAIL, GlobalCode::MSG => $e->getMessage(), GlobalCode::DATA => $e->getTraceAsString()], $status, $headers);
+            return returnJson([GlobalCode::CODE => GlobalCode::FAIL, GlobalCode::MSG => $e->getMessage(), GlobalCode::DATA => $e->getTraceAsString()], $status, $headers);
         } else {
-            return json([GlobalCode::CODE => GlobalCode::FAIL, GlobalCode::MSG => $e->getMessage(), GlobalCode::DATA => $e->getMessage()], $status, $headers);
+            return returnJson([GlobalCode::CODE => GlobalCode::FAIL, GlobalCode::MSG => $e->getMessage(), GlobalCode::DATA => $e->getMessage()], $status, $headers);
         }
     }
 
     public function grant(Throwable $e)
     {
         if (request()->input('debug') == GlobalCode::DEBUG || config('app.debug')) {
-            return json([GlobalCode::CODE => GlobalCode::GRANT, GlobalCode::MSG => $e->getMessage(), GlobalCode::DATA => $e->getTraceAsString()]);
+            return returnJson([GlobalCode::CODE => GlobalCode::GRANT, GlobalCode::MSG => $e->getMessage(), GlobalCode::DATA => $e->getTraceAsString()]);
         } else {
-            return json([GlobalCode::CODE => GlobalCode::GRANT, GlobalCode::MSG => $e->getMessage(), GlobalCode::DATA => $e->getMessage()]);
+            return returnJson([GlobalCode::CODE => GlobalCode::GRANT, GlobalCode::MSG => $e->getMessage(), GlobalCode::DATA => $e->getMessage()]);
         }
     }
 

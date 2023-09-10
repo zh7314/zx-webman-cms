@@ -271,9 +271,9 @@ class CommonService
          * windows：http://www.la.com/upload\\image\\20230626\\15d092d9058b7c3ac1952c79ede5b411.jpg
          * linux：http://www.la.com/upload/image/20230626/15d092d9058b7c3ac1952c79ede5b411.jpg
          */
-//        return $filePath . $fileName;
+        $path = $filePath . $fileName;
 
-        return ['id' => uniqid(), 'src' => $filePath . $fileName, 'fileName' => $fileName];
+        return ['id' => uniqid(), 'src' => getResource($path), 'fileName' => $fileName, 'path' => $path];
     }
 
     //检测文件是否合法
