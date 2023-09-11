@@ -13,6 +13,9 @@ php 8.0
 webmen 1.5.0     
 composer 2      
 
+### 数据库 sql(使用最新日期文件)
+`webman\doc\sql_bak`
+
 ### 前端开发组件
 scui 1.6.9      
 node v14.21.3       
