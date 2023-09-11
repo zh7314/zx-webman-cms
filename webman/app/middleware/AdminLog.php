@@ -14,6 +14,7 @@ class  AdminLog implements MiddlewareInterface
 {
     public function process(Request $request, callable $next): Response
     {
+//        p(getTime() . self::class);
 
         $log = new Log();
         $log->method = $request->method();

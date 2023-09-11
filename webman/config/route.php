@@ -16,6 +16,20 @@ use app\util\GlobalCode;
 use Webman\Route;
 use support\Request;
 
+//请求不存在的url返回信息
+Route::fallback(function (Request $request) {
+    $response = strtoupper($request->method()) === 'OPTIONS' ? response('', 204) : returnJson([GlobalCode::CODE => GlobalCode::NOT_FOUND, GlobalCode::MSG => '404 not found', GlobalCode::DATA => null]);
+    $response->withHeaders([
+        'Access-Control-Allow-Credentials' => 'true',
+        'Access-Control-Allow-Origin' => "*",
+        'Access-Control-Allow-Methods' => '*',
+        'Access-Control-Allow-Headers' => '*',
+    ]);
+    return $response;
+});
+//关闭自动路由
+Route::disableDefaultRoute();
+
 //首页
 Route::get('/', function ($rquest) {
     return view('index/view');
@@ -287,20 +301,7 @@ Route::group('/api/admin', function () {
     app\middleware\AdminLog::class
 ]);
 
-//请求不存在的url返回信息
-Route::fallback(function (Request $request) {
-    $response = strtoupper($request->method()) === 'OPTIONS' ? response('', 204) : returnJson([GlobalCode::CODE => GlobalCode::NOT_FOUND, GlobalCode::MSG => '404 not found', GlobalCode::DATA => '']);
-    $response->withHeaders([
-        'Access-Control-Allow-Credentials' => 'true',
-        'Access-Control-Allow-Origin' => "*",
-        'Access-Control-Allow-Methods' => '*',
-        'Access-Control-Allow-Headers' => '*',
-    ]);
-    return $response;
-});
 
-//关闭自动路由
-Route::disableDefaultRoute();
 
 
 

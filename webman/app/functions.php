@@ -1080,3 +1080,11 @@ if (!function_exists('returnJson')) {
         return new Response($status, $headers, json_encode($data, $options));
     }
 }
+
+if (!function_exists('getTime')) {
+    function getTime(string $format = 'Y-m-d H-i-s u')
+    {
+        $dateTime = new DateTime();
+        return $dateTime->format($format);
+    }
+}
