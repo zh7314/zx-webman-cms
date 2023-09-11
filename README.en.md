@@ -10,7 +10,7 @@
 
 ### Back-end development component
 php 8.0     
-laravel 9.0     
+webmen 1.5.0     
 composer 2
 
 ### Front-end development component
