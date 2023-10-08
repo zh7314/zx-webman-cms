@@ -157,7 +157,7 @@ export default {
 		//加载树数据
 		async getNewsCate() {
 			var res = await this.$API.website.newsCate.getTree.get();
-			this.options = res.data;
+			this.options = res.data ?? [];
 		},
 		//表单提交方法
 		submit() {

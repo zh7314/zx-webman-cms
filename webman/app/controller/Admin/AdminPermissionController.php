@@ -18,8 +18,8 @@ class AdminPermissionController
     {
         try {
             $where = [];
-            $page = parameterCheck($request->page, 'int', 0);
-            $pageSize = parameterCheck($request->pageSize, 'int', 0);
+            $page = parameterCheck($request->input('page'), 'int', 0);
+            $pageSize = parameterCheck($request->input('pageSize'), 'int', 0);
 
             $where['component'] = parameterCheck($request->input('component'), 'string', '');
             $where['hidden'] = parameterCheck($request->input('hidden'), 'int', 0);

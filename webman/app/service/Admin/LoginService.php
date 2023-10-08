@@ -6,9 +6,6 @@ use app\model\Admin;
 use app\util\GlobalCode;
 use Exception;
 
-//use Illuminate\Support\Facades\URL;
-use URL;
-
 class LoginService
 {
 
@@ -88,7 +85,7 @@ class LoginService
 
         $data = [];
         $data['name'] = $admin->real_name;
-        $data['avatar'] = URL::to($admin->avatar);
+        $data['avatar'] = $admin->avatar;
         $data['introduction'] = 'admin';
         $data['roles'][] = 'admin';
 

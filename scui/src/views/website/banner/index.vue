@@ -115,7 +115,7 @@ export default {
 		//加载树数据
 		async getBannerCate() {
 			var res = await this.$API.website.bannerCate.getTree.get();
-			this.options = res.data;
+			this.options = res.data ?? [];
 		},
 		//删除
 		async del(row) {

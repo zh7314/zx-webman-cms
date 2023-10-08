@@ -2,7 +2,6 @@
 
 namespace app\middleware;
 
-use support\Log;
 use Webman\MiddlewareInterface;
 use Webman\Http\Response;
 use Webman\Http\Request;
@@ -13,10 +12,8 @@ class  CrossDomain implements MiddlewareInterface
     public function process(Request $request, callable $next): Response
     {
 //        p(getTime() . self::class);
-
         // 如果是options请求则返回一个空响应，否则继续向洋葱芯穿越，并得到一个响应
-        $response = strtoupper($request->method()) === 'OPTIONS' ? response('') : $next($request);
-
+        $response = strtoupper($request->method()) === 'OPTIONS' ? response('', 204) : $next($request);
         // 给响应添加跨域相关的http头
         $response->withHeaders([
             'Access-Control-Allow-Credentials' => 'true',

@@ -128,7 +128,7 @@ export default {
 		//加载树数据
 		async getDownloadCate() {
 			var res = await this.$API.website.downloadCate.getTree.get();
-			this.options = res.data;
+			this.options = res.data ?? [];
 		},
 		//删除
 		async del(row) {

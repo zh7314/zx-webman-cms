@@ -8,8 +8,7 @@ use Throwable;
 use app\util\ResponseTrait;
 use support\Db;
 
-
-class ProductController 
+class ProductController
 {
 
     use ResponseTrait;

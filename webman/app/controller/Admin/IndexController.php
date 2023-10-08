@@ -2,7 +2,6 @@
 
 namespace app\controller\Admin;
 
-
 use app\service\Admin\CommonService;
 use app\service\Admin\LoginService;
 use support\Db;

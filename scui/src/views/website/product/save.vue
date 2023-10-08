@@ -156,7 +156,7 @@ export default {
 		//加载树数据
 		async getProductCate() {
 			var res = await this.$API.website.productCate.getTree.get();
-			this.options = res.data;
+			this.options = res.data ?? [];
 			// this.options.unshift(this.topOptions)
 		},
 		//表单提交方法

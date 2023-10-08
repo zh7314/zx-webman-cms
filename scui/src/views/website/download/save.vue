@@ -125,7 +125,7 @@ export default {
 			var res = await this.$API.website.lang.list.get()
 			if (res.code == 200) {
 
-				this.platform.list = res.data.list
+				this.lang.list = res.data.list
 			} else {
 				this.$alert(res.msg, "提示", {type: 'error'})
 			}
@@ -133,7 +133,7 @@ export default {
 		async getPlatform() {
 			var res = await this.$API.website.platform.list.get()
 			if (res.code == 200) {
-				this.lang.list = res.data.list
+				this.platform.list = res.data.list
 			} else {
 				this.$alert(res.msg, "提示", {type: 'error'})
 			}
@@ -146,7 +146,7 @@ export default {
 		//加载树数据
 		async getDownloadCate() {
 			var res = await this.$API.website.downloadCate.getTree.get();
-			this.options = res.data;
+			this.options = res.data ?? [];
 		},
 		//表单提交方法
 		submit() {

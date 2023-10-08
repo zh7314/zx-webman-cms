@@ -10,7 +10,7 @@ use app\util\ResponseTrait;
 use support\Db;
 
 
-class DownloadCateController 
+class DownloadCateController
 {
 
     use ResponseTrait;

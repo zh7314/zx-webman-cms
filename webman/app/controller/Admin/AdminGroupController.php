@@ -9,7 +9,7 @@ use app\util\ResponseTrait;
 use support\Db;
 
 
-class AdminGroupController 
+class AdminGroupController
 {
 
     use ResponseTrait;

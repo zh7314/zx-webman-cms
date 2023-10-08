@@ -9,7 +9,7 @@ use app\util\ResponseTrait;
 use support\Db;
 
 
-class BannerController 
+class BannerController
 {
 
     use ResponseTrait;

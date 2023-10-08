@@ -8,7 +8,6 @@ use Throwable;
 use app\util\ResponseTrait;
 use support\Db;
 
-
 class LangController
 {
 

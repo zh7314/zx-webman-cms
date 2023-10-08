@@ -111,7 +111,7 @@ export default {
 			if (this.form.user == 'admin') {
 				menu = await this.$API.auth.menu.getMenu.post()
 			} else {
-				menu = await this.$API.auth.menu.get()
+				menu = await this.$API.auth.menu.getMenu.post()
 			}
 			if (menu.code == 200) {
 				if (menu.data.menu.length == 0) {

@@ -9,7 +9,7 @@ use app\util\ResponseTrait;
 use support\Db;
 
 
-class VideoController 
+class VideoController
 {
 
     use ResponseTrait;
