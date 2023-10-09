@@ -21,6 +21,10 @@ mysql 8.0
 scui 1.6.9      
 node v14.21.3       
 
+### curd 工具
+https://gitee.com/open-php/php-code-generator  
+https://github.com/zh7314/php-code-generator
+
 ### 效果图
 ![1.png](./images/1.png)
 ![2.png](./images/2.png)
