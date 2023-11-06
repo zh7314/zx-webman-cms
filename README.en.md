@@ -16,6 +16,7 @@ composer 2
 ### database sql(use the latest date file)
 `webman\doc\sql_bak`
 mysql 8.0
+Default system account password: admin/admin
 
 ### Front-end development component
 scui 1.6.9      
